@@ -6,8 +6,8 @@
 
     <string name="main_description">Die App zeigt eine Benachrichtigung, wenn deine AirPods verbunden sind</string>
     <string name="supportedDevicesTitle"><u>Unterstützte Geräte:</u></string>
-    <string name="airpods1">&#8226; Apple AirPods 1st gen</string>
-    <string name="airpods2">&#8226; Apple AirPods 2nd gen</string>
+    <string name="airpods1">&#8226; Apple AirPods 1. Generation</string>
+    <string name="airpods2">&#8226; Apple AirPods 2. Generation</string>
     <string name="airpodspro">&#8226; Apple AirPods Pro</string>
     <string name="airpodsmax">&#8226; Apple AirPods Max</string>
     <string name="beatsx">&#8226; Beats X</string>
