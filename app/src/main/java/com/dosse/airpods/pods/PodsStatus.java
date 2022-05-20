@@ -2,6 +2,7 @@ package com.dosse.airpods.pods;
 
 import com.dosse.airpods.pods.data.AirPods1;
 import com.dosse.airpods.pods.data.AirPods2;
+import com.dosse.airpods.pods.data.AirPods3;
 import com.dosse.airpods.pods.data.AirPodsMax;
 import com.dosse.airpods.pods.data.AirPodsPro;
 import com.dosse.airpods.pods.data.BeatsFlex;
@@ -13,6 +14,7 @@ import com.dosse.airpods.pods.data.Pod;
 import com.dosse.airpods.pods.data.Powerbeats3;
 import com.dosse.airpods.pods.data.PowerbeatsPro;
 import com.dosse.airpods.pods.data.RegularPods;
+import com.dosse.airpods.utils.Logger;
 
 /**
  * Decoding the beacon:
@@ -43,7 +45,6 @@ public class PodsStatus {
     public PodsStatus (String status) {
         if (status == null)
             return;
-
         boolean flip = isFlipped(status);
 
         int leftStatus = Integer.parseInt("" + status.charAt(flip ? 12 : 13), 16); // Left airpod (0-10 batt; 15=disconnected)
@@ -88,7 +89,8 @@ public class PodsStatus {
                 break;
             case '9': pods = new BeatsStudio3(singlePod); // Beats Studio 3
                 break;
-            case '3': pods = new Powerbeats3(singlePod); // Powerbeats 3
+            case '3':
+                pods = status.charAt(8) == '2' ? new AirPods3(leftPod, rightPod, casePod) : new Powerbeats3(singlePod); // Powerbeats 3 or AirPods
                 break;
             default: pods = new RegularPods(leftPod, rightPod, casePod); // Unknown
         }
